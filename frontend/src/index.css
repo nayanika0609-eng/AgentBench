@@ -1,0 +1,569 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   AGENTBENCH THEME
+   Purple + Cyan + Teal
+   No green / orange chart palette
+   ========================================================= */
+
+:root {
+  /* LIGHT MODE */
+  --canvas: 247 245 252;
+  --surface: 255 255 255;
+  --surface-soft: 249 248 252;
+  --surface-cool: 244 247 250;
+
+  --ink-900: 31 27 42;
+  --ink-800: 48 43 61;
+  --ink-700: 67 62 81;
+  --ink-600: 91 86 106;
+  --ink-500: 112 107 126;
+  --ink-400: 139 134 151;
+  --ink-300: 174 169 184;
+  --ink-200: 211 207 219;
+  --ink-100: 235 232 240;
+
+  --line: 218 213 228;
+  --line-soft: 232 228 238;
+  --line-strong: 194 187 208;
+
+  --accent-50: 245 240 255;
+  --accent-100: 237 228 255;
+  --accent-200: 220 203 255;
+  --accent-300: 196 168 255;
+  --accent-400: 124 58 237;
+  --accent-500: 109 40 217;
+  --accent-600: 91 33 182;
+  --accent-700: 76 29 149;
+  --accent-800: 59 20 120;
+  --accent-900: 46 16 92;
+
+  /* CHART */
+  --chart-purple: #7c3aed;
+  --chart-cyan: #0891b2;
+  --chart-teal: #0d9488;
+  --chart-slate: #64748b;
+
+  --chart-grid: rgba(124, 58, 237, 0.13);
+  --chart-text: #4b4658;
+  --chart-panel: #ffffff;
+
+  --radar-grid: rgba(124, 58, 237, 0.20);
+  --radar-text: #454052;
+
+  --progress-track: #e8e4ee;
+
+  --leader-purple-bg: rgba(124, 58, 237, 0.055);
+  --leader-purple-border: rgba(124, 58, 237, 0.25);
+
+  --leader-cyan-bg: rgba(8, 145, 178, 0.055);
+  --leader-cyan-border: rgba(8, 145, 178, 0.25);
+
+  --leader-slate-bg: rgba(100, 116, 139, 0.055);
+  --leader-slate-border: rgba(100, 116, 139, 0.25);
+}
+
+.dark {
+
+  /* =====================================================
+     DARK MODE ONLY
+     Deep navy / charcoal + purple
+     No green cast
+     ===================================================== */
+
+  --canvas: 13 15 23;
+
+  --surface: 20 22 32;
+
+  --surface-soft: 17 19 28;
+
+  --surface-cool: 15 20 29;
+
+
+  /* =====================================================
+     TEXT
+     Bright enough to be clearly readable
+     ===================================================== */
+
+  --ink-900: 248 246 252;
+
+  --ink-800: 235 232 243;
+
+  --ink-700: 216 212 226;
+
+  --ink-600: 190 185 205;
+
+  --ink-500: 164 159 181;
+
+  --ink-400: 137 132 157;
+
+  --ink-300: 108 103 129;
+
+  --ink-200: 76 72 96;
+
+  --ink-100: 48 46 67;
+
+
+  /* =====================================================
+     BORDERS
+     ===================================================== */
+
+  --line: 63 58 82;
+
+  --line-soft: 45 42 61;
+
+  --line-strong: 92 82 120;
+
+
+  /* =====================================================
+     PURPLE ACCENT
+     ===================================================== */
+
+--accent-50: 167 112 255;
+--accent-100: 167 112 255;
+--accent-200: 183 148 255;
+
+  --accent-300: 167 112 255;
+
+  --accent-400: 183 148 255;
+
+  --accent-500: 155 92 246;
+
+  --accent-600: 139 78 232;
+
+  --accent-700: 124 58 237;
+
+  --accent-800: 109 40 217;
+
+  --accent-900: 91 33 182;
+
+
+  /* =====================================================
+     CHART COLORS
+     Purple + Cyan + Teal
+     ===================================================== */
+
+  --chart-purple: #A78BFA;
+
+  --chart-cyan: #38BDF8;
+
+  --chart-teal: #2DD4BF;
+
+  --chart-slate: #94A3B8;
+
+  --chart-grid: rgba(167, 139, 250, 0.18);
+
+  --chart-text: #D8D3E5;
+
+  --chart-panel: #141620;
+
+
+  /* =====================================================
+     RADAR
+     ===================================================== */
+
+  --radar-grid: rgba(167, 139, 250, 0.28);
+
+  --radar-text: #E4DFEF;
+
+
+  /* =====================================================
+     PROGRESS
+     ===================================================== */
+
+  --progress-track: #302C3C;
+
+
+  /* =====================================================
+     LEADERBOARD
+     ===================================================== */
+
+  --leader-purple-bg: rgba(167, 139, 250, 0.10);
+
+  --leader-purple-border: rgba(167, 139, 250, 0.38);
+
+  --leader-cyan-bg: rgba(56, 189, 248, 0.09);
+
+  --leader-cyan-border: rgba(56, 189, 248, 0.34);
+
+  --leader-slate-bg: rgba(148, 163, 184, 0.09);
+
+  --leader-slate-border: rgba(148, 163, 184, 0.30);
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    background: rgb(var(--canvas));
+  }
+
+  body {
+    @apply bg-canvas text-ink-800 font-sans antialiased;
+
+    min-height: 100vh;
+
+    background:
+      radial-gradient(
+        ellipse 900px 520px at 0% 0%,
+        rgba(124, 58, 237, 0.055),
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 700px 500px at 100% 100%,
+        rgba(8, 145, 178, 0.035),
+        transparent 60%
+      ),
+      rgb(var(--canvas));
+
+    background-attachment: fixed;
+  }
+
+  .dark body {
+    background:
+      radial-gradient(
+        ellipse 900px 520px at 0% 0%,
+        rgba(124, 58, 237, 0.11),
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 700px 500px at 100% 100%,
+        rgba(34, 211, 238, 0.045),
+        transparent 60%
+      ),
+      rgb(var(--canvas));
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+
+    opacity: 0.30;
+
+    background-image:
+      linear-gradient(
+        to right,
+        rgba(124, 58, 237, 0.035) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(124, 58, 237, 0.035) 1px,
+        transparent 1px
+      );
+
+    background-size: 36px 36px;
+
+    mask-image:
+      radial-gradient(
+        ellipse at center,
+        black 15%,
+        transparent 88%
+      );
+
+    z-index: -1;
+  }
+
+  .dark body::before {
+    opacity: 0.22;
+  }
+
+  ::selection {
+    background: rgba(124, 58, 237, 0.20);
+    color: rgb(var(--ink-900));
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight text-ink-900;
+  }
+
+  ::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgb(var(--canvas));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--ink-200));
+    border: 2px solid rgb(var(--canvas));
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--ink-300));
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--chart-purple);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+
+  /*
+   * Prevent old white Tailwind utilities from creating
+   * ugly white patches in either theme.
+   */
+
+  .bg-white {
+    background-color: rgb(var(--surface)) !important;
+  }
+
+  .bg-white\/95 {
+    background-color: rgb(var(--surface) / 0.95) !important;
+  }
+
+  .bg-white\/90 {
+    background-color: rgb(var(--surface) / 0.90) !important;
+  }
+
+  .bg-white\/80 {
+    background-color: rgb(var(--surface) / 0.80) !important;
+  }
+
+  .bg-white\/70 {
+    background-color: rgb(var(--surface) / 0.70) !important;
+  }
+
+  .bg-white\/60 {
+    background-color: rgb(var(--surface) / 0.60) !important;
+  }
+
+  .text-white {
+    color: rgb(var(--ink-900)) !important;
+  }
+
+  .border-white {
+    border-color: rgb(var(--line)) !important;
+  }
+
+  .border-white\/10 {
+    border-color: rgb(var(--line) / 0.5) !important;
+  }
+}
+
+/* =========================================================
+   COMPONENTS
+   ========================================================= */
+
+@layer components {
+  .panel {
+    @apply bg-surface border border-line rounded-xl2 shadow-card;
+  }
+
+  .panel-soft {
+    @apply bg-surface-soft border border-line-soft rounded-xl2;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md font-medium text-sm px-4 py-2.5 transition-all duration-150 select-none disabled:opacity-40 disabled:pointer-events-none;
+  }
+
+  .btn-primary {
+    @apply btn bg-transparent text-accent-400 border border-accent-500 hover:bg-accent-50 active:scale-[0.98];
+  }
+
+  .btn-accent {
+    @apply btn bg-accent-500 text-white hover:bg-accent-400 active:scale-[0.98] shadow-glow;
+  }
+
+  .dark .btn-accent {
+    color: #ffffff;
+  }
+
+  .btn-secondary {
+    @apply btn bg-transparent text-ink-800 border border-line hover:border-line-strong hover:bg-accent-50 active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent text-ink-600 hover:bg-accent-50 hover:text-accent-400;
+  }
+
+  .btn-danger {
+    @apply btn bg-transparent text-rose-400 border border-rose-400/30 hover:bg-rose-50 active:scale-[0.98];
+  }
+
+  .input {
+    @apply w-full rounded-md border border-line bg-surface-soft px-3.5 py-2.5 text-sm text-ink-800 placeholder:text-ink-500 outline-none transition-all focus:border-accent-400 focus:ring-2 focus:ring-accent-400/10;
+  }
+
+  .label {
+    @apply text-xs font-medium uppercase tracking-wide text-ink-600;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-sm px-2 py-1 text-[11px] font-medium leading-none border border-line;
+  }
+
+  .kicker {
+    @apply text-[11px] font-mono uppercase tracking-[0.14em] text-ink-600;
+  }
+
+  .divider-tech {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-accent-400/30 to-transparent;
+  }
+
+  .terminal-label {
+    @apply font-mono text-[10px] uppercase tracking-[0.18em] text-ink-600;
+  }
+
+  .terminal-value {
+    color: var(--chart-purple);
+    @apply font-mono;
+  }
+
+  .grid-panel {
+    background-image:
+      linear-gradient(
+        to right,
+        rgba(124, 58, 237, 0.045) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(124, 58, 237, 0.045) 1px,
+        transparent 1px
+      );
+
+    background-size: 24px 24px;
+  }
+
+  .dark .grid-panel {
+    background-image:
+      linear-gradient(
+        to right,
+        rgba(167, 139, 250, 0.055) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(167, 139, 250, 0.055) 1px,
+        transparent 1px
+      );
+  }
+
+  /*
+   * Response-grid blocks.
+   * These are intentionally fully filled rather than
+   * translucent empty squares.
+   */
+
+  .benchmark-block {
+    display: block;
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    border-radius: 3px;
+    border: 1px solid rgba(124, 58, 237, 0.25);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+      0 0 7px rgba(124, 58, 237, 0.10);
+  }
+
+.dark .benchmark-block {
+  border-color: rgba(167, 139, 250, 0.38);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 0 12px rgba(167, 139, 250, 0.28),
+    0 0 22px rgba(124, 58, 237, 0.14);
+}
+
+  /*
+   * Recharts cursor must remain invisible.
+   * This eliminates the white hover rectangle.
+   */
+
+  .recharts-tooltip-cursor {
+    fill: transparent !important;
+    opacity: 0 !important;
+  }
+}
+/* =========================================================
+   DARK MODE VISIBILITY FIX
+   ========================================================= */
+
+.dark .bg-accent-50 {
+  background-color: rgba(167, 112, 255, 0.12) !important;
+}
+
+.dark .bg-accent-100 {
+  background-color: rgba(167, 112, 255, 0.16) !important;
+}
+
+.dark .bg-accent-200 {
+  background-color: rgba(167, 112, 255, 0.22) !important;
+}
+
+
+/* Icons inside purple boxes */
+
+.dark .bg-accent-50 svg,
+.dark .bg-accent-100 svg,
+.dark .bg-accent-200 svg {
+  color: #B794FF !important;
+}
+
+
+/* Normal sidebar text */
+
+.dark aside a {
+  color: #E8E4F0 !important;
+}
+
+
+/* Sidebar icons */
+
+.dark aside a svg {
+  color: #C4BDD5 !important;
+}
+
+
+/* Active sidebar item */
+
+.dark aside a.bg-accent-50 {
+  background-color: rgba(167, 112, 255, 0.16) !important;
+  color: #C4A8FF !important;
+  border-color: rgba(167, 112, 255, 0.40) !important;
+}
+
+.dark aside a.bg-accent-50 svg {
+  color: #C4A8FF !important;
+}
+
+
+/* Benchmark/card headings */
+
+.dark .panel h1,
+.dark .panel h2,
+.dark .panel h3,
+.dark .panel h4 {
+  color: #F5F2FA !important;
+}
+
+
+/* Benchmark/card normal text */
+
+.dark .panel p,
+.dark .panel span {
+  color: #D8D3E5;
+}
+
+
+/* Keep purple metric values purple */
+
+.dark .panel .text-accent-400,
+.dark .panel .text-accent-500 {
+  color: #B794FF !important;
+}
