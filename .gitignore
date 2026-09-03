@@ -158,3 +158,4 @@ backend/vector_indexes/
 frontend_backup/node_modules/
 frontend_backup/dist/
 frontend_backup/.vite/
+frontend_backup/
