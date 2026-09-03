@@ -16,7 +16,8 @@ from app.routers import comparison
 from app.routers.export import router as export_router
 from app.routers import documents
 from app.routers import rag
-
+from app.database.connection import engine, Base
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title=settings.APP_NAME,
