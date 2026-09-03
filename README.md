@@ -80,15 +80,90 @@ Different models can perform differently depending on:
 
 # 🚀 How to Run AgentBench
 
-AgentBench is a full-stack application consisting of:
+AgentBench requires Ollama + Backend + Frontend to run.
 
-- **Frontend:** React + TypeScript + Vite
-- **Backend:** FastAPI + Python
-- **LLM Runtime:** Ollama
-- **Vector Search:** FAISS
+## Prerequisites
 
-The frontend and backend need to be running at the same time.
+Install:
+- Python 3.10+
+- Node.js 18+
+- Git
+- Ollama
 
+Clone the repository:
+
+    git clone <YOUR_REPOSITORY_URL>
+    cd AgentBench
+
+## 1. Start Ollama
+
+Install Ollama from https://ollama.com/
+
+Pull the required models:
+
+    ollama pull mistral:7b
+    ollama pull llama3.1:8b
+    ollama pull gemma2:9b
+
+Verify:
+
+    ollama list
+
+Keep Ollama running.
+
+## 2. Start the Backend
+
+Open Terminal 1:
+
+    cd AgentBench/backend
+
+Create a virtual environment:
+
+Windows:
+
+    python -m venv venv
+    venv\Scripts\activate
+
+macOS / Linux:
+
+    python3 -m venv venv
+    source venv/bin/activate
+
+Install dependencies:
+
+    pip install -r requirements.txt
+
+Start the backend:
+
+    uvicorn main:app --reload
+
+Backend runs at:
+
+    http://localhost:8000
+
+## 3. Start the Frontend
+
+Open Terminal 2:
+
+    cd AgentBench/frontend
+    npm install
+    npm run dev
+
+Open the URL shown by Vite, usually:
+
+    http://localhost:5173
+
+## 4. Run AgentBench
+
+Make sure all three are running:
+
+Ollama   → LLM runtime
+Backend  → http://localhost:8000
+Frontend → http://localhost:5173
+
+Then open the frontend URL in your browser and start benchmarking.
+
+> Note: If .env.example files are provided, create the required .env files and configure them before starting the application.
 ---
 
 ## 📋 Prerequisites
